@@ -3,48 +3,43 @@
 <div align="center">
 
 <img src="figure/first_fig.png" width="500"/>
-  <div>&nbsp;</div>
+  <div> </div>
   <div align="center">
   </div>
 </div>
-
 
 # 简介
 
 本项目InternLM-AnimeChat是Takway.AI团队带来的InternRay全息数字人底座——这是一个基于InternLM2 1.7B-7B的创新创意项目，它将角色扮演与智能交互提升到了一个全新的水平。介绍视频请戳[B站链接](https://www.bilibili.com/video/BV1Aj421o7Gr)。
 
 ## 背景
+
 在二次元文化中，虚拟偶像已经成为一个重要的组成部分，它们不仅仅是动画角色，更是粉丝们情感投射的对象。然而，现有的虚拟偶像往往缺乏个性化和互动性，无法满足粉丝对于深度参与和个性化体验的需求。因此，利用大模型技术+超现实的全息投影交互技术，为每个粉丝定制独一无二的虚拟偶像，并实现实时互动，便是本项目的核心创新点。
 
 ## 目标
 
 本项目的目标是为每个粉丝提供一个独一无二的虚拟偶像，并实现实时互动。具体目标如下：
-1. 😊个性化定制：开发一套系统，允许用户根据自己的喜好，定制虚拟偶像的外观、性格、兴趣等特征。这需要大模型具备高度的个性化理解和创造力，以及能够根据用户输入生成独特的角色设计。
 
+1. 😊个性化定制：开发一套系统，允许用户根据自己的喜好，定制虚拟偶像的外观、性格、兴趣等特征。这需要大模型具备高度的个性化理解和创造力，以及能够根据用户输入生成独特的角色设计。
 2. ⏰实时互动：设计一个能够实时响应用户输入的对话系统，让虚拟偶像能够与用户进行自然、流畅的对话。这不仅要求模型具备强大的语言理解和生成能力，还需要能够根据虚拟偶像的个性化特征进行适当的情感表达和反应。
 
 ## 特别致谢
 
 感谢[书生·浦语团队](https://github.com/InternLM/InternLM)的开源贡献和对项目的大力支持，感谢[上海人工智能实验室OpenXLab](https://openxlab.org.cn/)和[深圳科创学院InnoxSZ](https://www.innoxsz.com/)提供的算力及服务器支持，感谢[ChatHaruhi](https://github.com/LC1332/Chat-Haruhi-Suzumiya)开源项目！！！
 
-
-
 <div align="center">
 
 <img src="figure/ChatHaruhi.png"/>
-  <div>&nbsp;</div>
+  <div> </div>
   <div align="center">
   </div>
 </div>
 
-
-
-
 # 选择一：微调+部署环境配置
 
-
 clone 本 repo 以及 submodules
-```shell 
+
+```shell
 git clone --recurse-submodules https://github.com/Irvingao/InternLM-AnimeChat
 ```
 
@@ -53,13 +48,12 @@ git clone --recurse-submodules https://github.com/Irvingao/InternLM-AnimeChat
 
 ## 微调+部署环境配置
 
-
 ### 新建环境-安装lmdeploy
 
 使用 pip ( python 3.8+) 安装 LMDeploy，或者[源码安装](https://github.com/InternLM/lmdeploy/blob/main/docs/zh_cn/build.md)
 
 ```shell
-conda create -n raychat python=3.10 -y
+conda create -n raychat python=3.8 -y
 pip install lmdeploy
 ```
 
@@ -73,15 +67,18 @@ pip install https://github.com/InternLM/lmdeploy/releases/download/v${LMDEPLOY_V
 ```
 
 安装XTuner
+
 ```shell
 cd train/Xtuner
 pip install -e '.[all]'
 ```
 
 安装其他依赖
+
 ```
 pip install -r requirements.txt
 ```
+
 </details>
 
 ---
@@ -98,7 +95,7 @@ pip install -r requirements.txt
 使用 pip ( python 3.8+) 安装 LMDeploy，或者[源码安装](https://github.com/InternLM/lmdeploy/blob/main/docs/zh_cn/build.md)
 
 ```shell
-conda create -n raychat python=3.10 -y
+conda create -n raychat python=3.8 -y
 pip install lmdeploy
 ```
 
@@ -125,7 +122,7 @@ git clone https://www.modelscope.cn/ghz1729854488/Ray-Chat.git
 ## lmdeploy api
 
 首先需要使用 LMDeploy 进行离线转换
-    
+
 离线转换需要在启动服务之前，将模型转为 lmdeploy TurboMind 的格式，如下所示。
 
 ```python
@@ -154,8 +151,6 @@ lmdeploy serve api_server swk_workspace --server-name ${gradio_ui_ip} --server-p
 
 <details>
   <summary style="font-weight: bold; font-size: larger;">⚙️基于API的数据获取与处理</summary>
-
-
 
 ## 数据的组成
 
@@ -215,7 +210,6 @@ xtuner convert merge \
 xtuner chat process_data/merged_models/ray --prompt-template internlm2_chat
 ```
 
-
 ### 2. streamlit对话web_demo
 
 为了方便，这里将直接使用 [InternLM](https://github.com/InternLM/InternLM) 的 repo 中带的 web_demo.py 进行对话
@@ -242,7 +236,6 @@ model = (AutoModelForCausalLM.from_pretrained('/root/code/xtuner/process_data/me
                                               trust_remote_code=True)
 ```
 
-
 接下来需要运行以下命令开启，此处建议使用vscode进行转发
 
 ```bash
@@ -250,7 +243,6 @@ streamlit run chat/web_demo.py
 ```
 
 即可进行对话。
-
 
 </details>
 
@@ -264,36 +256,33 @@ streamlit run chat/web_demo.py
 为了让一张 A100 能够部署两个模型的 API 需要进行一些设置
 
 1. 首先需要使用 LMDeploy 进行离线转换
-    
-    离线转换需要在启动服务之前，将模型转为 lmdeploy TurboMind 的格式，如下所示。
-    
-    ```python
-    lmdeploy convert internlm2-chat-7b {repo_file}
-    ```
-    
-    随后会产生一个 `workspace` 文件夹，将其重命名。
-    
-    ```python
-    mv workspace takway_workspace
-    ```
-    
-    接下来继续转换别的模型，此处不在赘述。
-    
+
+   离线转换需要在启动服务之前，将模型转为 lmdeploy TurboMind 的格式，如下所示。
+
+   ```python
+   lmdeploy convert internlm2-chat-7b {repo_file}
+   ```
+
+   随后会产生一个 `workspace` 文件夹，将其重命名。
+
+   ```python
+   mv workspace takway_workspace
+   ```
+
+   接下来继续转换别的模型，此处不在赘述。
 2. 修改 `takway_workspace/triton_models/weights/config.ini` 中的参数
-    
-    ```python
-    #22行
-    cache_max_entry_count = 0.08
-    ```
-    
+
+   ```python
+   #22行
+   cache_max_entry_count = 0.08
+   ```
 3. 启动api
-    
-    新建一个终端，开启Chat:
-    
-    ```jsx
-    #Chat 启动
-    lmdeploy serve api_server takway_workspace --server-name ${gradio_ui_ip} --server-port ${gradio_ui_port}
-    ```
-</details>    
 
+   新建一个终端，开启Chat:
 
+   ```jsx
+   #Chat 启动
+   lmdeploy serve api_server takway_workspace --server-name ${gradio_ui_ip} --server-port ${gradio_ui_port}
+   ```
+
+</details>
