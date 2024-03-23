@@ -10,7 +10,7 @@
 
 # 简介
 
-本项目InternLM-AnimeChat是Takway.AI团队带来的InternRay全息数字人底座——这是一个基于InternLM2 1.7B-7B的创新创意项目，它将角色扮演与智能交互提升到了一个全新的水平。介绍视频请戳[B站链接](https://www.bilibili.com/video/BV1Aj421o7Gr)。
+InternLM-AnimeChat是Takway.AI团队"InternMate全息心友底座"项目的Chat模型开源代码，InternMate全息心友底座是一个基于InternLM2 1.8B-7B的创新创意项目，它将角色扮演与智能交互提升到了一个全新的水平。介绍视频请戳[B站链接](https://www.bilibili.com/video/BV1Aj421o7Gr)。
 
 ## 背景
 
